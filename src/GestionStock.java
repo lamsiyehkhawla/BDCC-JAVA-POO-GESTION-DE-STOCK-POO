@@ -63,7 +63,6 @@ public class GestionStock {
 
     //Modifier un Produit suit a un code
     static void modifierProduit(Produit[] produits,int code, String nouveauNom, int nouvelleQuantite, double nouveauPrix){
-            Produit produit= new Produit();
         //Parcourir le tableau afin de trouver le produit suite au code donné
         for (Produit p : produits) {
             if (p.getCode() == code) {
@@ -125,7 +124,6 @@ public class GestionStock {
     static void calculerValeurStock(Produit[] produits){
         //Initialisé la valeur stock a 0
         double stock = 0;
-         int currentIndex=produits.length;// stocker la taille du tableau dans une variable
         //Parcourir le tabelau pour recupuer les valeurs du stok et prix
         for (Produit produit : produits) {
             if(produit !=null){
