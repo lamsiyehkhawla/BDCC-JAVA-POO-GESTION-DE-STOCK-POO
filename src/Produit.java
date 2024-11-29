@@ -12,6 +12,8 @@ public class Produit {
         this.prix = prix;
     }
 
+    public Produit() {
+    }
 
     public int getCode() {
         return code;
@@ -45,5 +47,13 @@ public class Produit {
         this.prix = prix;
     }
 
+    public double calculerValeur() {
+        return quantity * prix;
+    }
+
+    @Override
+    public String toString() {
+        return "Produit [Code: " + code + ", Nom: " + nom + ", Quantité: " + quantity + ", Prix: " + prix+"]";
+}
 
 }

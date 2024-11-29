@@ -52,5 +52,46 @@ public class GestionStock {
             System.out.println("Impossible d'ajouter un produit : la liste est pleine.");
         }
     }
+
+    static void modifierProduit(Produit[] produits,int code, String nouveauNom, int nouvelleQuantite, double nouveauPrix){
+            Produit produit= new Produit();
+        for (int i = 0; i < produits.length; i++) {
+            if(produits[i].getCode()==code){
+                produits[i].setCode(code);
+                produits[i].setNom(nouveauNom);
+                produits[i].setQuantity(nouvelleQuantite);
+                produits[i].setPrix(nouveauPrix);
+                System.out.println("Update is done");
+                break;
+            }else {
+                System.out.println("New value should not be null");
+            }
+            System.out.println("*********");
+            System.out.println(produits[i].toString());
+            System.out.println("*********");
+            System.out.println("Code: " + produits[i].getCode() +
+                    "\t Nom: " +produits[i].getNom() +
+                    "\t Quantité: " + produits[i].getQuantity() +
+                    "\t Prix: " + produits[i].getPrix());
+        }
+
+    }
+
+    static void rechercherProduit(Produit[] produits,String nom){
+        for (int i = 0; i < produits.length; i++) {
+            if(produits[i].getNom().equals(nom)){
+                System.out.println("Code: " + produits[i].getCode() +
+                        "\t Nom: " +produits[i].getNom() +
+                        "\t Quantité: " + produits[i].getQuantity() +
+                        "\t Prix: " + produits[i].getPrix());
+                break;
+            }else{
+                System.out.println("produit introuvable !");
+
+            }
+
+        }
+    }
+
     }
 

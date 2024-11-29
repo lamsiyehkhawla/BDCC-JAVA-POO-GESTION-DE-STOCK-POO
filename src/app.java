@@ -30,7 +30,7 @@ public class app {
             GestionStock.ajouterProduit(produits,produit);
             break;
             case 2:
-              /*  System.out.println("enter le code :");
+               System.out.println("enter le code :");
                 code=clavier.nextInt();
                 System.out.println("enter le nom:");
                 nom=clavier.next();
@@ -38,10 +38,8 @@ public class app {
                 qte=clavier.nextInt();
                 System.out.println("enter le prix:");
                 prix=clavier.nextDouble();
-                modifierProduit(code,nom,qte,prix);
-                afficherProduits();
-
-                break;*/
+                GestionStock.modifierProduit(produits,code,nom,qte,prix);
+                break;
 
             case 3:
                 /*System.out.println("enter le code :");
@@ -54,10 +52,10 @@ public class app {
                 break;
 
             case 5:
-               /* System.out.println("enter le nom :");
+               System.out.println("enter le nom :");
                 nomR=clavier.next();
-                rechercherProduit(nomR);
-                break;*/
+                GestionStock.rechercherProduit(produits,nomR);
+                break;
 
             case 6:
                /* calculerValeurStock();
