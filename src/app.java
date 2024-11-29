@@ -27,7 +27,7 @@ public class app {
             prix = clavier.nextDouble();
 
             // Call ajouterProduit with the collected input
-            GestionStock.ajouterProduit(produits, code, nom,qte, prix);
+            GestionStock.ajouterProduit(produits);
             break;
             case 2:
               /*  System.out.println("enter le code :");

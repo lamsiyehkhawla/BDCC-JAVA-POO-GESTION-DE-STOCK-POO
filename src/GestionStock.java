@@ -41,12 +41,12 @@ public class GestionStock {
         // Look for the first available slot in the array
         for (int i = 0; i < produits.length; i++) {
             if (produits[i] == null) {
-                produits[i] = new Produit(0, "nom",0,0); // Add the new product
+                Produit produit = new Produit(0, "nom", 0, 0); // Add the new product
                 System.out.println("Produit ajouté avec succès !");
                 added = true;
                 break;
-            }
-        }
+
+            }}
 
         // If the array is full
         if (!added) {
