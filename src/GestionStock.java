@@ -25,7 +25,7 @@ public class GestionStock {
         // Si aucun produit n'a été trouvé, afficher un message
         if (!hasProducts) {
             System.out.println("Pas de produit, merci d'ajouter des nouveaux produits.");
-            return; // Sortir une fois rien a afficher
+            return; // Sortir une fois rien à afficher
         }
         //parcourir le tableau et afficher les produits
         for (Produit produit : produits) {
@@ -46,7 +46,7 @@ public class GestionStock {
                 return; // quitter si le code n'est pas unique
             }
         }
-        //parcourir le tabelau une fois le slot est null on ajoute un produit
+        //parcourir le tabelau une fois le slot est null on ajouteun produit
         for (int i = 0; i < produits.length; i++) {
             if (produits[i] == null) {
                 produits[i] = produit;  // ajouter le produit dans le produit dand le premier slot disponible
@@ -129,10 +129,11 @@ public class GestionStock {
         //Parcourir le tabelau pour recupuer les valeurs du stok et prix
         for (Produit produit : produits) {
             if(produit !=null){
+                //Calculer la valeur du stock utilisant la methode CalculerValuer
                 stock += produit.calculerValeur();
             }
         }
-                System.out.println("Le stock est " +stock);
+                System.out.println("Le stock est " +stock);//Afficher le total du stock
         }
 
 }

@@ -1,20 +1,21 @@
 public class Produit {
-
+        //Declaration des varialbles
     private int code;
     private String nom;
     private int quantity;
     private double prix;
 
+    //constructeur avec paramettre
     public Produit(int code, String nom, int quantity, double prix) {
         this.code = code;
         this.nom = nom;
         this.quantity = quantity;
         this.prix = prix;
     }
-
+    //constructeur sans paramettre
     public Produit() {
     }
-
+    //Declaartion des getters afin d'acceder les attributs
     public int getCode() {
         return code;
     }
@@ -30,6 +31,8 @@ public class Produit {
     public double getPrix() {
         return prix;
     }
+
+    //Declaartion des getters afin de modiffier les attributs
 
     public void setCode(int code) {
         this.code = code;
