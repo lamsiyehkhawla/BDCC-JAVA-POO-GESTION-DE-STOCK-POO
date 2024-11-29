@@ -35,23 +35,22 @@ public class GestionStock {
         }
     }
 
-    public static void ajouterProduit(Produit[] produits) {
+    public static void ajouterProduit(Produit[] produits, Produit produit) {
         boolean added = false;
 
-        // Look for the first available slot in the array
+        // Look for the first available (null) slot in the array
         for (int i = 0; i < produits.length; i++) {
             if (produits[i] == null) {
-                Produit produit = new Produit(0, "nom", 0, 0); // Add the new product
+                produits[i] = produit;  // Add the new product to the first available slot
                 System.out.println("Produit ajouté avec succès !");
                 added = true;
-                break;
+                break;  // Exit once the product is added
+            }
+        }
 
-            }}
-
-        // If the array is full
         if (!added) {
-            System.out.println("Impossible d'ajouter un nouveau produit : la liste est pleine.");
+            System.out.println("Impossible d'ajouter un produit : la liste est pleine.");
         }
     }
+    }
 
-}

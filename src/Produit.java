@@ -12,7 +12,6 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Produit(){}
 
     public int getCode() {
         return code;

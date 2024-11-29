@@ -6,8 +6,8 @@ public class app {
         int op, code, qte;
         double prix;
         String nom, nomR;
-        //int maxSize =100;
-        Produit[] produits = new Produit[5];
+        int maxSize =100;
+        Produit[] produits = new Produit[maxSize];
 
       do{
           GestionStock.printMenu();
@@ -25,9 +25,9 @@ public class app {
             qte = clavier.nextInt();
             System.out.println("Entrez le prix:");
             prix = clavier.nextDouble();
+            Produit produit = new Produit(code, nom, qte, prix);
 
-            // Call ajouterProduit with the collected input
-            GestionStock.ajouterProduit(produits);
+            GestionStock.ajouterProduit(produits,produit);
             break;
             case 2:
               /*  System.out.println("enter le code :");
