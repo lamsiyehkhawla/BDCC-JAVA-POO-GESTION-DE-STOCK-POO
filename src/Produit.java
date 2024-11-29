@@ -51,9 +51,13 @@ public class Produit {
         return quantity * prix;
     }
 
+    //surcharger la methode String afin d'afficher le detail d'un produit
     @Override
     public String toString() {
-        return "Produit [Code: " + code + ", Nom: " + nom + ", Quantité: " + quantity + ", Prix: " + prix+"]";
+        return             "Code: " + getCode() +
+                "\t Nom: " + getNom() +
+                "\t Quantité: " + getQuantity() +
+                "\t Prix: " + getPrix();
 }
 
 }

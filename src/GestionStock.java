@@ -1,4 +1,5 @@
 public class GestionStock {
+    //Methode pour afficher le Menu
     static void printMenu(){
         System.out.println("------Gestion de Stock------");
         System.out.println("1. Ajouter un produit");
@@ -11,81 +12,88 @@ public class GestionStock {
         System.out.println("Choisissez une option :");
     }
 
+    //Afficher le liste des produits
     static void afficherProduits(Produit[] produits){
-        boolean hasProducts = false;
+        boolean hasProducts = false; //suivre si un produit a été trouver dans le tableau
+        //parcourir le tableau
         for (Produit produit : produits) {
             if (produit != null) {
-                hasProducts = true;
-                break; // Exit the loop as soon as we find a non-null product
+                hasProducts = true;// produit est trouvé
+                break; //
             }
         }
-
+        // Si aucun produit n'a été trouvé, afficher un message
         if (!hasProducts) {
             System.out.println("Pas de produit, merci d'ajouter des nouveaux produits.");
-            return; // Exit the function since there’s nothing to display
+            return; // Sortir une fois rien a afficher
         }
-
+        //parcourir le tableau et afficher les produits
         for (Produit produit : produits) {
                 if(produit !=null) {
-                    System.out.println("Code: " + produit.getCode() +
-                            "\t Nom: " + produit.getNom() +
-                            "\t Quantité: " + produit.getQuantity() +
-                            "\t Prix: " + produit.getPrix());
+                    System.out.println(produit.toString());
+
                 }
         }
     }
 
+        // Ajouter un produit
     public static void ajouterProduit(Produit[] produits, Produit produit) {
         boolean added = false;
-
-        // Look for the first available (null) slot in the array
-        for (int i = 0; i < produits.length; i++) {
-            if (produits[i] == null) {
-                produits[i] = produit;  // Add the new product to the first available slot
-                System.out.println("Produit ajouté avec succès !");
-                added = true;
-                break;  // Exit once the product is added
+        for (Produit p : produits) {
+            // Verifier si le code est unique
+            if (p != null && p.getCode() == produit.getCode()) {
+                System.out.println("Le code du produit existe déjà. Impossible d'ajouter ce produit.");
+                return; // quitter si le code n'est pas unique
             }
         }
-
+        //parcourir le tabelau une fois le slot est null on ajoute un produit
+        for (int i = 0; i < produits.length; i++) {
+            if (produits[i] == null) {
+                produits[i] = produit;  // ajouter le produit dans le produit dand le premier slot disponible
+                System.out.println("Produit ajouté avec succès !");
+                added = true;
+                break;  // quitter une fois le produit est ajouté
+            }
+        }
+        // si le tableau est plein affiche message
         if (!added) {
             System.out.println("Impossible d'ajouter un produit : la liste est pleine.");
         }
     }
 
+    //Modifier un Produit suit a un code
     static void modifierProduit(Produit[] produits,int code, String nouveauNom, int nouvelleQuantite, double nouveauPrix){
             Produit produit= new Produit();
-        for (int i = 0; i < produits.length; i++) {
-            if(produits[i].getCode()==code){
-                produits[i].setCode(code);
-                produits[i].setNom(nouveauNom);
-                produits[i].setQuantity(nouvelleQuantite);
-                produits[i].setPrix(nouveauPrix);
+        //Parcourir le tableau afin de trouver le produit suite au code donné
+        for (Produit p : produits) {
+            if (p.getCode() == code) {
+                //modifier le produit avec setters, vu que code, nom, quantity et prix sont privés
+                p.setCode(code);
+                p.setNom(nouveauNom);
+                p.setQuantity(nouvelleQuantite);
+                p.setPrix(nouveauPrix);
                 System.out.println("Update is done");
-                break;
-            }else {
+                break;// une fois done, on sort de la boucle
+            } else {
                 System.out.println("New value should not be null");
             }
-            System.out.println("*********");
-            System.out.println(produits[i].toString());
-            System.out.println("*********");
-            System.out.println("Code: " + produits[i].getCode() +
-                    "\t Nom: " +produits[i].getNom() +
-                    "\t Quantité: " + produits[i].getQuantity() +
-                    "\t Prix: " + produits[i].getPrix());
+            //La methode String pour afficher les details d'un prduits
+            System.out.println(p.toString());
         }
 
     }
 
+    //Chercher un produit avec le nom
     static void rechercherProduit(Produit[] produits,String nom){
-        for (int i = 0; i < produits.length; i++) {
-            if(produits[i].getNom().equals(nom)){
-                System.out.println("Code: " + produits[i].getCode() +
-                        "\t Nom: " +produits[i].getNom() +
-                        "\t Quantité: " + produits[i].getQuantity() +
-                        "\t Prix: " + produits[i].getPrix());
-                break;
-            }else{
+        //parcourir le tableau afin de trouver le produit selon le nom donné
+        for (Produit produit : produits) {
+            /* verfier si le nom du produit est egal et nom entré
+             * vu que nom est privé in pass par getNom()
+             * equals fin de verifier le les deux valeurs de nom*/
+            if (produit.getNom().equals(nom)) {
+                System.out.println(produit.toString());// ToString pour afficher le detail du produit
+                break;//sortir
+            } else {
                 System.out.println("produit introuvable !");
 
             }
@@ -93,5 +101,39 @@ public class GestionStock {
         }
     }
 
+    //Suuprimer un produit selon un code donné
+    static void supprimerProduit(Produit[] produits,int code) {
+        int currentIndex=produits.length;
+        //Prcourir le tableau pourtrouver le prdouit à supprimer
+        for (int i = 0; i < currentIndex; i++) {
+            // verifie si l'élément du tableau à i n'est pas null
+            //Verfie si le code du produit correspond au code recherché
+            if (produits[i] != null && produits[i].getCode() == code ) {
+                // Décaler tous les produits suivants d'une case vers la gauche
+                for (int j = i; j < currentIndex - 1; j++) {
+                    produits[j]= produits[j + 1];// Remplacer le produit actuel par le suivant
+                }
+                produits[currentIndex - 1]=null;// mettre le dernier élément du tableau à null
+
+                System.out.println("Produit supprimé avec succès!");
+                break;//sortir de la boucle une fois que le produit est supprimé
+            }
+        }
     }
+
+    //Calculer le stock
+    static void calculerValeurStock(Produit[] produits){
+        //Initialisé la valeur stock a 0
+        double stock = 0;
+         int currentIndex=produits.length;// stocker la taille du tableau dans une variable
+        //Parcourir le tabelau pour recupuer les valeurs du stok et prix
+        for (Produit produit : produits) {
+            if(produit !=null){
+                stock += produit.calculerValeur();
+            }
+        }
+                System.out.println("Le stock est " +stock);
+        }
+
+}
 

@@ -42,10 +42,10 @@ public class app {
                 break;
 
             case 3:
-                /*System.out.println("enter le code :");
+                System.out.println("enter le code :");
                 code=clavier.nextInt();
-                supprimerProduit(code);
-                break;*/
+                GestionStock.supprimerProduit(produits,code);
+                break;
                 //afficher
             case 4:
                 GestionStock.afficherProduits(produits);
@@ -58,11 +58,11 @@ public class app {
                 break;
 
             case 6:
-               /* calculerValeurStock();
-                break;*/
+               GestionStock.calculerValeurStock(produits);
+                break;
 
             case 0:
-
+                System.out.println("Merci");
                 break;
 
         }
