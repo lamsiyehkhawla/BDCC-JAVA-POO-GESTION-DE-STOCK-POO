@@ -24,7 +24,7 @@ public class app {
         switch (op) {
             case 1:
             //Ajouter un produit
-                //Saisie du code, nom , qte et prix via la console
+                //Saisie du code, nom, qte et prix via la console
             System.out.println("Entrez le code du produit:");
              code = clavier.nextInt();
             clavier.nextLine(); // Consomme le caractère de retour à la ligne
